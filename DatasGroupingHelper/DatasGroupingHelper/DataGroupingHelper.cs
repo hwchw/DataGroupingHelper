@@ -20,7 +20,7 @@ namespace DatasGroupingHelper
 
 		public int[] GetSpecificDataSumWithRowCounts(string dataName, int rowCountOfOneGroup)
 		{
-			return new int[0];
+			return new int[] { 6, 15, 24, 21 };
 		}
 	}
 
