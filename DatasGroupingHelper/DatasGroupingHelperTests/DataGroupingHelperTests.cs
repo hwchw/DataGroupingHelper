@@ -53,5 +53,15 @@ namespace DatasGroupingHelperTests
 
 			act.ShouldThrow<ArgumentException>();
 		}
+
+		[TestMethod()]
+		public void GetSpecificDataSumWithRowCounts_given_DataName_id_rowCountOfOneGroup_0_expected_ArgumentException()
+		{
+			var sumRowHelper = new DataGroupingHelper();
+
+			Action act = () => sumRowHelper.GetSpecificDataSumWithRowCounts("id", 0);
+
+			act.ShouldThrow<ArgumentException>();
+		}
 	}
 }
