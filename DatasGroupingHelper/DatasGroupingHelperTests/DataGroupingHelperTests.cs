@@ -30,5 +30,16 @@ namespace DatasGroupingHelperTests
 
 			expected.ToExpectedObject().ShouldEqual(actual);
 		}
+
+		[TestMethod()]
+		public void GetSpecificDataSumWithRowCounts_given_DataName_Revenue_countPerGroup_3_expected_is_36_45_54_41()
+		{
+			var sumRowHelper = new DataGroupingHelper();
+
+			var expected = new List<int>() { 36, 45, 54, 41 };
+			var actual = sumRowHelper.GetSpecificDataSumWithRowCounts("Revenue", 3);
+
+			expected.ToExpectedObject().ShouldEqual(actual);
+		}
 	}
 }
