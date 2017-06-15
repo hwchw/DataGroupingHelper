@@ -21,6 +21,7 @@ namespace DatasGroupingHelper
 
 		public List<int> GetSpecificDataSumWithRowCounts(string dataName, int rowCountOfOneGroup)
 		{
+			HandleExceptionSituation(dataName, rowCountOfOneGroup);
 			var index = 0;
 			var list = _products[dataName];
 			var sumList = new List<int>();
@@ -31,6 +32,11 @@ namespace DatasGroupingHelper
 				index += rowCountOfOneGroup;
 			}
 			return sumList;
+		}
+
+		private static void HandleExceptionSituation(string dataName, int rowCountOfOneGroup)
+		{
+			if( string.IsNullOrEmpty(dataName) || dataName.Contains(" ")) throw new ArgumentException();
 		}
 	}
 
