@@ -21,7 +21,7 @@ namespace DatasGroupingHelperTests
 		}
 
 		[TestMethod()]
-		public void GetSpecificDataSumWithRowCounts_given_DataName_id_countPerGroup_4_expected_is_6_15_24_21()
+		public void GetSpecificDataSumWithRowCounts_given_DataName_id_countPerGroup_4_expected_is_10_26_30()
 		{
 			var sumRowHelper = new DataGroupingHelper();
 
