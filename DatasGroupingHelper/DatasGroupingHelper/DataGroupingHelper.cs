@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DatasGroupingHelper
 {
@@ -18,14 +19,24 @@ namespace DatasGroupingHelper
 			};
 		}
 
-		public int[] GetSpecificDataSumWithRowCounts(string dataName, int rowCountOfOneGroup)
+		public List<int> GetSpecificDataSumWithRowCounts(string dataName, int rowCountOfOneGroup)
 		{
-			return new int[] { 6, 15, 24, 21 };
+			var chunkSize = rowCountOfOneGroup;
+			var index = 0;
+			var list = _products[dataName];
+			var sumList = new List<int>();
+			while (index < list.Count)
+			{
+				var count = list.Count - index > chunkSize ? chunkSize : list.Count - index;
+				sumList.Add(list.GetRange(index, count).Sum(x => Convert.ToInt32(x)));
+				index += chunkSize;
+			}
+			return sumList;
 		}
 	}
 
 	internal interface IGroupingMethods
 	{
-		int[] GetSpecificDataSumWithRowCounts(string dataName, int rowCountOfOneGroup);
+		List<int> GetSpecificDataSumWithRowCounts(string dataName, int rowCountOfOneGroup);
 	}
 }
