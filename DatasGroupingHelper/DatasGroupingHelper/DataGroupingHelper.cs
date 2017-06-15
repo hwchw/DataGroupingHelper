@@ -21,15 +21,14 @@ namespace DatasGroupingHelper
 
 		public List<int> GetSpecificDataSumWithRowCounts(string dataName, int rowCountOfOneGroup)
 		{
-			var chunkSize = rowCountOfOneGroup;
 			var index = 0;
 			var list = _products[dataName];
 			var sumList = new List<int>();
 			while (index < list.Count)
 			{
-				var count = list.Count - index > chunkSize ? chunkSize : list.Count - index;
+				var count = list.Count - index > rowCountOfOneGroup ? rowCountOfOneGroup : list.Count - index;
 				sumList.Add(list.GetRange(index, count).Sum(x => Convert.ToInt32(x)));
-				index += chunkSize;
+				index += rowCountOfOneGroup;
 			}
 			return sumList;
 		}

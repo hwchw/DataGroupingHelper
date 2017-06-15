@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DatasGroupingHelper;
 using ExpectedObjects;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DatasGroupingHelperTests
@@ -40,6 +42,16 @@ namespace DatasGroupingHelperTests
 			var actual = sumRowHelper.GetSpecificDataSumWithRowCounts("Revenue", 3);
 
 			expected.ToExpectedObject().ShouldEqual(actual);
+		}
+
+		[TestMethod()]
+		public void GetSpecificDataSumWithRowCounts_given_DataName_empty_expected_ArgumentException()
+		{
+			var sumRowHelper = new DataGroupingHelper();
+
+			Action act = () => sumRowHelper.GetSpecificDataSumWithRowCounts(" ", 3);
+
+			act.ShouldThrow<ArgumentException>();
 		}
 	}
 }
