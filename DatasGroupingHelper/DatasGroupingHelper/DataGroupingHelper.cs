@@ -37,6 +37,7 @@ namespace DatasGroupingHelper
 		private static void HandleExceptionSituation(string dataName, int rowCountOfOneGroup)
 		{
 			if( string.IsNullOrEmpty(dataName) || dataName.Contains(" ")) throw new ArgumentException();
+			if (rowCountOfOneGroup <=0) throw new ArgumentException();
 		}
 	}
 
